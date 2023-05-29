@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SanoKaam", "SanoKaam\SanoKaam.csproj", "{91DBD31C-C856-4B56-B5E6-9FA02AA33B29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SanoKaam.Tests", "SanoKaam.Tests\SanoKaam.Tests.csproj", "{73002D13-F40D-473B-8E88-141285C07D51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91DBD31C-C856-4B56-B5E6-9FA02AA33B29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91DBD31C-C856-4B56-B5E6-9FA02AA33B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91DBD31C-C856-4B56-B5E6-9FA02AA33B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91DBD31C-C856-4B56-B5E6-9FA02AA33B29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73002D13-F40D-473B-8E88-141285C07D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73002D13-F40D-473B-8E88-141285C07D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73002D13-F40D-473B-8E88-141285C07D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73002D13-F40D-473B-8E88-141285C07D51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00A16D47-BA91-41AA-B88C-5AE3E82BB2C3}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,110 @@
+﻿@model List< Job >
+@{
+    ViewData["Title"] = "MyJobs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    string id = ViewBag.Id;
+}
+<div class="headingcontainer">
+
+<h1>My Jobs</h1>
+</div>
+
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 " style="background-color: #57C5B6; padding-block-end: 800px; padding-top: 30px; ">
+            <ul class=" list-unstyled font-weight-bold text-light ">
+                <li> <a class="btn fw-bold" asp-controller="EmployerDashboard" asp-action="Index">Applicants</a> </li>
+                <li> <a class="btn fw-bold text-light" asp-controller="EmployerDashboard" asp-action="MyJobs">My Jobs</a> </li>
+                <li> <a class="btn fw-bold" asp-controller="AddJob" asp-action="Index">Add Jobs</a> </li>
+
+            </ul>
+        </div>
+
+
+        <div class="text-center px-5 mx-5 col-9">
+
+            <table class="table   thick-border table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Job Title
+                        </th>
+                        <th>
+                           Deadline
+                        </th>
+                        <th>
+                            Detail
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (var i = 0; i < Model.Count; i++)
+                    {
+                        if (Model[i].EmployerId == id)
+                        {
+                            <tr id="@(i)">
+                                <td>
+
+                                    @Model[i].JobTitle
+
+                                </td>
+                                <td>
+
+                                    @Model[i].Deadline.ToShortDateString()
+
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" asp-controller="EmployerDashboard" asp-action="MyJobDetail" asp-route-id=@Model[i].Id>
+                                        View More
+                                    </a>
+                                    <button type="button" class="btn btn-danger removefromDb "  value=@Model[i].Id>
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+
+                                            < path d = "M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+
+                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>   
+    $('.removefromDb').on("click", function () {
+            var id = $(this).attr('value');
+            var rownumber = $(this).attr('id');
+            deleteData(id, rownumber);
+        });
+  
+
+    function deleteData(id, rownumber) {
+        $.ajax({
+            type: 'POST',
+            url: 'RemoveJob',
+            data: { id: id },
+         
+        })
+    };
+</script>
+
+
+

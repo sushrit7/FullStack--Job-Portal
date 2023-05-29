@@ -1,0 +1,67 @@
+﻿@model List< Apply >
+
+@{
+    string id = ViewBag.Id;
+}
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="headingcontainer">
+<h1 > Your Dashboard</h1>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 " style="background-color: #57C5B6; padding-block-end: 800px; padding-top: 30px;">
+            <ul class=" list-unstyled font-weight-bold ">
+                <a class="btn fw-bold" asp-controller="ProfessionalProfile" asp-action="Index">Professional Profile</a>
+               
+            </ul>
+        </div>
+
+
+        <div class="text-center px-5 mx-5 col-9">
+
+            <table class="table   thick-border table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Job Title
+                        </th>
+                        <th>
+                            Company
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var obj in Model)
+            {
+               
+                        
+                            <tr>
+                                <td><a class="btn" asp-controller="WorkerDashboard" asp-action="AppliedCompany" asp-route-id="@obj.JobId">
+                                        @obj.JobTitle
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn" asp-controller="WorkerDashboard" asp-action="AppliedCompany" asp-route-id="@obj.JobId">
+                                        @obj.CompanyName
+                                    </a>
+                                </td>
+                                <td> @obj.Status</td>
+                            </tr>
+                        }
+                    
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+
+

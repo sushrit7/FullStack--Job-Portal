@@ -1,0 +1,223 @@
+﻿ @model ApplyView
+
+
+@{
+    ViewData["Title"] = "Apply";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="headingcontainer">
+<h1>Apply</h1>
+</div>
+<div class=" d-flex justify-content-center">     
+    <div class="border border-3 border-dark rounded p-3 m-3 d-flex">               
+            <img class="mx-2" id="preview" src="@Url.Action("GetLogo", "ProfessionalProfile", new { id = @Model.Job.Id })" alt="Profile Photo" width="175" height="175" style="object-fit:contain" />                    
+        <div class="d-flex flex-column justify-content-center ">
+
+            <h3>
+            @Model.Job.JobTitle
+        </h3>
+        <p>@Model.Job.CompanyName</p>    
+        </div>
+    </div>  
+</div>
+
+
+<div class="px-5">
+
+
+    <form method="post"  enctype="multipart/form-data" >
+
+        <table border="0" cellpadding="5" cellspacing="0" class=" table ">
+            <tr>
+                <td class="text-end" colspan="2">
+
+                    <br />
+                    @if (Model.Profile.Photo != null)
+                    {
+                        <div style="padding-right:120px">
+                            <img id="preview" src="@Url.Action("GetPhoto", "ProfessionalProfile", new { id = @Model.Profile.Id })" alt="Profile Photo" width="175" height="175" />
+                            <br />
+                            <label asp-for="@Model.Apply.Photo" class="control-label py-3"><b>Your Professional Photo</b></label>
+                        </div>
+
+                        <input asp-for="@Model.Apply.Photo" type="file" class="form-control-file" onchange="previewImage(event)" accept="image/*" />
+                        <input hidden asp-for="@Model.Profile.Id" value="@Model.Profile.Id" />
+                        <input hidden asp-for="@Model.Apply.ProfileId" value="@Model.Profile.Id" />
+
+                    }
+
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 50%">
+
+                    <input hidden asp-for="@Model.Apply.JobId" value="@Model.Job.Id" />
+                    <input hidden asp-for="@Model.Apply.UserId" value="@Model.Profile.UserId" />
+                    <input hidden asp-for="@Model.Apply.JobTitle" value="@Model.Job.JobTitle" />
+                    <input hidden asp-for="@Model.Apply.CompanyName" value="@Model.Job.CompanyName" />
+                    <input hidden asp-for="@Model.Apply.EmployerId" value="@Model.Job.EmployerId" />
+                    <input hidden asp-for="@Model.Apply.Status" value="Submitted" />
+                    
+                    <label asp-for="@Model.Apply.FirstName"><b>First Name</b></label><br />
+                    <input disabled asp-for="@Model.Apply.FirstName" type="text" maxlength="50" style="width:100%;max-width: 260px" value="@Model.Profile.FirstName" />
+                    <input hidden asp-for="@Model.Apply.FirstName" type="text" maxlength="50" style="width:100%;max-width: 260px" value="@Model.Profile.FirstName" />
+
+                </td>
+                <td style="width: 50%">
+                    <label asp-for="@Model.Apply.LastName"><b>Last Name</b></label><br />
+                    <input disabled asp-for="@Model.Apply.LastName" type="text" maxlength="50" style="width:100%;max-width: 260px" value="@Model.Profile.LastName" />
+                    <input hidden asp-for="@Model.Apply.LastName" type="text" maxlength="50" style="width:100%;max-width: 260px" value="@Model.Profile.LastName" />
+
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 50%">
+                    <label asp-for="@Model.Apply.Country"><b>Country  </b></label><br />
+                    <input disabled required asp-for="@Model.Apply.Country" value="@Model.Profile.Country" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                    <input hidden  asp-for="@Model.Apply.Country" value="@Model.Profile.Country" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+
+                </td>
+                <td style="width: 50%">
+                    <label asp-for="@Model.Apply.City"><b>City </b></label><br />
+                    <input disabled required asp-for="@Model.Apply.City" value="@Model.Profile.City" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                    <input hidden required asp-for="@Model.Apply.City" value="@Model.Profile.City" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label asp-for="@Model.Apply.Email"><b>Email </b></label><br />
+                    <input asp-for="@Model.Apply.Email" type="text" maxlength="100" style="width:100%;max-width: 535px" value="@Model.Profile.Email" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label asp-for="@Model.Apply.PortfolioWebsite"><b>Portfolio Website</b></label><br />
+                    <input asp-for="@Model.Apply.PortfolioWebsite" type="text" maxlength="255" value="http://" style="width:100%;max-width: 535px" value="@Model.Profile.PortfolioWebsite" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="@Model.Apply.Occupation"><b>Occupation</b></label><br />
+                    <input required asp-for="@Model.Apply.Occupation" value="@Model.Profile.Occupation" type="text" maxlength="80" style="width:100%;max-width: 260px" />
+                </td>
+            </tr>
+            <tr>
+            <tr>
+                <td>
+                    <label asp-for="@Model.Apply.PhoneNumber"><b>Phone</b></label><br />
+                    <input asp-for="@Model.Apply.PhoneNumber" type="text" maxlength="50" style="width:100%;max-width: 260px" value="@Model.Profile.PhoneNumber" />
+                </td>
+
+            </tr>            
+            <tr>
+            <td>
+                <label asp-for="@Model.Apply.Start"><b>When can you start?</b></label><br />
+                <input required asp-for="@Model.Apply.Start" type="text" maxlength="50" style="width:100%;max-width: 260px"  />
+            </td>                     
+            <tr>
+                <td colspan="2">
+                    <label asp-for="@Model.Apply.Relocate"><b>Are you willing to relocate?</b></label><br />
+                    <input asp-for="@Model.Apply.Relocate" type="radio" value="Yes" checked="checked" /> Yes
+                    <input asp-for="@Model.Apply.Relocate" type="radio" value="No" /> No
+                    <input asp-for="@Model.Apply.Relocate" type="radio" value="NotSure" /> Not sure
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <label asp-for="@Model.Apply.Reference"><b>Reference / Comments / Questions</b></label><br />
+                    <textarea required asp-for="@Model.Apply.Reference" rows="7" cols="150" > </textarea>
+                </td>
+            </tr>
+        </table>
+        
+        <ul class="list-group list-group-horizontal">
+            <li class="list-group-item"><b>Skills:</b></li>
+            @foreach (var skill in Model.Profile.Skill)
+        {
+                <li class="list-group-item"> @skill.Skills </li>
+        }
+        </ul>
+
+        <h1>Experiences</h1>
+        <div class="text-center">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Position</th>
+                        <th>Level</th>
+                        <th>Organization</th>
+
+                    </tr>
+                </thead>
+                <tbody id="experiencesBody">
+                    @foreach (var experience in Model.Profile.Experience)
+                    {
+                        <tr>
+                            <td>
+                                @experience.Year
+                            </td>
+                            <td>
+                                @experience.Position
+                            </td>
+                            <td>
+                                @experience.Level
+                            </td>
+                            <td>
+                                @experience.Organization
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <h1>Education</h1>
+
+        <div class="text-center">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Year of Graduation</th>
+                        <th>Degree</th>
+                        <th>Level</th>
+                        <th>Grade</th>
+                        <th>Institution</th>
+
+                    </tr>
+                </thead>
+                <tbody id="education-container">
+
+                    @foreach (var education in Model.Profile.Education)
+                    {
+                        <tr>
+                            <td>
+                                @education.YearOfGraduation
+                            </td>
+                            <td>
+                                @education.Degree
+                            </td>
+                            <td>
+                                @education.Level
+                            </td>
+                            <td>
+                                @education.Grade
+                            </td>
+                            <td>
+                                @education.Institution
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <div class="text-center">
+            <button  type="submit" class="btn btn-danger   my-2 py-3 px-5  text-center" style="font-weight:700; line-height:80%;" asp-controller="Work" asp-action="Apply">APPLY NOW!</button>
+        </div>
+        
+    </form>
+    
+</div>

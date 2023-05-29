@@ -1,0 +1,42 @@
+﻿@model List<Profile>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="headingcontainer">
+<h1>HIRE</h1>
+</div>
+<div class="m-4">
+    <div class="row ">
+    @foreach (var profile in Model)
+    {
+            <div class="card-container m-3 px-0">
+            <img class="round" src="@Url.Action("GetPhoto", "ProfessionalProfile", new { id = profile.Id })" height="175" alt="user" />
+            <h3>@profile.FirstName @profile.LastName</h3>
+            <h6>@profile.City</h6>
+            <p>@profile.Occupation</p>
+          @*  <div class="buttons">
+                <button class="primary">
+                    Message
+                </button>
+                <button class="primary ghost" >
+                    Following
+                </button>
+            </div>*@
+                <div class="skills">
+                    <h6>Skills</h6>
+                    <ul>
+                        @foreach (var skill in profile.Skill)
+                        {
+                            <li>@skill.Skills</li>
+                        }
+                        
+                      
+                    </ul>
+                </div>
+        </div>
+    }
+    </div>
+</div>
+
+@**@

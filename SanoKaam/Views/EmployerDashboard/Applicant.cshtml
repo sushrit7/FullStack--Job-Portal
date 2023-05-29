@@ -1,0 +1,254 @@
+﻿
+@model Apply
+
+@{
+    ViewData["Title"] = "Applicant";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-end">
+    <a class="btn    my-2 py-3 px-5  text-center" style="font-weight:700; line-height:80%;margin-right:10%; background-color: #004A4F; color:#FFFF" asp-controller="EmployerDashboard" asp-action="Index">
+        Back</a>
+    
+</div>
+<div class="headingcontainer">
+<h1>Applicant</h1>
+</div>
+<div class="px-5">
+
+
+
+    <form method="post" asp-action="Applicant">
+
+        <table border="0" cellpadding="5" cellspacing="0" class=" table ">
+            <tr class=" text-center">
+                
+                <td colspan="2">
+                   <input hidden asp-for="@Model.JobId" />
+                    <input hidden asp-for="@Model.UserId"  />
+                    <input hidden asp-for="@Model.JobTitle"  />
+                    <input hidden asp-for="@Model.CompanyName"  />
+                    <input hidden asp-for="@Model.EmployerId" />
+
+                    <input hidden asp-for="@Model.FirstName" />
+                    <input hidden asp-for="@Model.LastName" />
+                    <input hidden asp-for="@Model.Email" />
+                    <input hidden asp-for="@Model.PortfolioWebsite" />
+                    <input hidden asp-for="@Model.Start" />
+
+                    <input hidden asp-for="@Model.PhoneNumber" />
+                    <input hidden asp-for="@Model.LastName" />
+                    <input hidden asp-for="@Model.Email" />
+                    <input hidden asp-for="@Model.PortfolioWebsite" />
+                    <input hidden asp-for="@Model.Start" />
+
+                    <input hidden asp-for="@Model.Relocate" />
+                    <input hidden asp-for="@Model.Reference" />
+
+                    <input hidden asp-for="@Model.Country" />
+                    <input hidden asp-for="@Model.City" />
+                    <input hidden asp-for="@Model.Occupation" />
+                    <input hidden asp-for="@Model.ProfileId" />
+                    <input asp-for="id" hidden />
+                    
+
+
+
+                    <select asp-for="Status" class="form-select text-center fw-bold text-uppercase alert-warning">
+                        <option value="Submitted">Submitted</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Selected">Selected</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>                  
+                </td>
+                <tr>
+            <tr class=" text-center">
+                <td colspan="2">
+
+                    <button type="submit" class="btn btn-primary   my-2 py-3 px-5  text-center" style="font-weight:700; line-height:80%; color:#FFFF" >
+                        Save Changes
+                    </button>
+                </td>
+             </tr>
+   
+    </table>
+    </form>
+</div>
+<div class="pb-4" >
+
+    <div class="wrapper" >
+        <div class="intro">
+            <div class="profile">
+                <div class="photo">
+                    <img id="preview" src="@Url.Action("GetPhoto", "ProfessionalProfile", new { id = Model.Profile.Id })" alt="Profile Photo" width="175" height="175" />
+
+                </div>
+                <div class="bio">
+                    <h3 class="name">@Model.FirstName @Model.LastName</h3>
+                    <p class="profession">@Model.Occupation</p>
+                </div>
+            </div>
+            <div class="intro-section about">
+                <h3 class="title">about me</h3>
+                <p class="paragraph">
+                    @Model.Profile.Bio
+                </p>
+            </div>
+            <div class="intro-section contact">
+                <h3 class="title">Contact</h3>
+                <div class="info-section">
+                    <i class="fas fa-phone"></i>
+                    <span>@Model.PhoneNumber</span>
+                </div>
+                <div class="info-section">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>@Model.City, @Model.Country</span>
+                </div>
+                <div class="info-section">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>@Model.Email</span>
+                </div>
+            <div class="info-section">
+                <i class="fas fa-paper-plane"></i>
+                <span><b>Can Start: @Model.Start</b></span>
+            </div>
+            <div>
+                <i class="fas fa-paper-plane"></i>
+                <span><b>Relocate: @Model.Relocate</b></span>
+            </div>
+            </div>
+            <div class="intro-section follow">
+                <h3 class="title">Portfolio Website</h3>
+                <div class="info-section link">
+                    <i class="fab fa-github"></i>
+                    <a target="_blank" rel="author" href="@Model.PortfolioWebsite">
+                        <span>@Model.PortfolioWebsite</span>
+                    </a>
+                </div>               
+            </div>
+      
+        </div>
+        <div class="detail">
+        <div class="detail-section edu">
+            <div class="detail-title">
+                <div class="title-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <span>Experience</span>
+            </div>
+                @foreach (var experience in Model.Profile.Experience)
+                {
+                    <div class="detail-content">
+                        <div class="timeline-block">
+                            <h3>@experience.Level @experience.Position <br /> @experience.Organization, @experience.Year </h3>
+                            <p></p>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="detail-section edu">
+                <div class="detail-title">
+                    <div class="title-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <span>Education</span>
+                </div>
+                @foreach (var education in Model.Profile.Education)
+                {
+                    <div class="detail-content">
+                        <div class="timeline-block">
+                            <h3>@education.Level in @education.Degree; <br /> @education.Institution, @education.YearOfGraduation </h3>
+                            <p></p>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="detail-section pg-skill">
+                <div class="detail-title">
+                    <div class="title-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <span> Skills</span>
+                </div>
+                <div class="detail-content">
+                    <ul class="pg-list">
+                        @foreach(var skill in Model.Profile.Skill){
+                        <li>
+                            <span>@skill.Skills</span>
+                            
+                        </li>
+                    }                       
+                    </ul>
+                </div>
+            </div>
+            <div class="detail-section tool-skill">
+                <div class="detail-title">
+                    <div class="title-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                <span>Reference / Comments / Questions</span>
+                </div>
+                <div class="detail-content">
+                    <ul class="tool-list">
+                        <li>
+                            
+                            <span class="tl-name">@Model.Reference</span>
+                            
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>         
+    </div>
+    </div>
+    </div>
+           @* <tr>
+                <td style="width: 50%">
+                    <label><b>First name  </b></label><br />
+                    <input disabled type="text" maxlength="50" style="width:100%;max-width: 260px" 
+                    value=@Model.FirstName />
+                </td>
+                <td style="width: 50%">
+                    <label ><b>Last name </b></label><br />
+                    <input disabled  type="text" maxlength="50" style="width:100%;max-width: 260px" value=@Model.LastName />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label ><b>Email </b></label><br />
+                    <input disabled  type="text" maxlength="100" style="width:100%;max-width: 535px" value=@Model.Email />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label ><b>Portfolio website</b></label><br />
+                    <input disabled  type="text" maxlength="255" style="width:100%;max-width: 535px" value=@Model.PortfolioWebsite />
+                </td>
+            </tr>
+
+            <td>
+                <label ><b>When can you start?</b></label><br />
+                <input disabled  type="text" maxlength="50" style="width:100%;max-width: 260px" value=@Model.Start />
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    <label ><b>Phone </b></label><br />
+                    <input disabled  type="text" maxlength="50" style="width:100%;max-width: 260px" value=@Model.PhoneNumber />
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label>Relocate</label>
+                    <input disabled value=@Model.Relocate />
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <label ><b>Reference / Comments / Questions</b></label><br />
+                    <textarea   disabled rows="7" cols="40" style="width:100%;max-width: 535px">@Model.Reference</textarea>
+                </td>
+            </tr>
+*@
+        

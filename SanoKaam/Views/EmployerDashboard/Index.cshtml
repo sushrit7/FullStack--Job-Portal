@@ -1,0 +1,80 @@
+﻿@model List< Apply >
+
+@{
+    string id = ViewBag.Id;
+}
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="headingcontainer">
+    <h1>Employer Dashboard</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 " style="background-color: #57C5B6; padding-block-end: 800px; padding-top: 30px;">
+            <ul class=" list-unstyled font-weight-bold text-light ">
+                <li> <a class="btn fw-bold text-light" asp-controller="EmployerDashboard" asp-action="Index">Applicants</a> </li>
+                <li> <a class="btn fw-bold" asp-controller="EmployerDashboard" asp-action="MyJobs">My Jobs</a> </li>
+                <li> <a class="btn fw-bold" asp-controller="AddJob" asp-action="Index">Add Jobs</a> </li>
+
+            </ul>
+        </div>
+
+
+        <div class="text-center px-5 mx-5 col-9">
+
+            <table class="table   thick-border table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Job Title
+                        </th>
+                        <th>
+                            Applicant Name
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model)
+                    {
+                        if (obj.EmployerId == id)
+                        {
+
+
+                            <tr>
+                                <td>
+                                   
+                                        @obj.JobTitle
+                                   
+                                </td>
+                                <td>
+                                   
+                                        @obj.FirstName @obj.LastName
+                                    
+                                </td>
+                                <td> @obj.Status</td>
+                                <td> <a class="btn btn-primary" asp-controller="EmployerDashboard" asp-action="Applicant" asp-route-id=@obj.id>
+                                    View More</a> </td>
+                            </tr>
+
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+

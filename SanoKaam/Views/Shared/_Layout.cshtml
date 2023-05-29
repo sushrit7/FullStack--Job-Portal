@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SanoKaam</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SanoKaam.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body >
+    <header >
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-custom  mb-0 navbar- rounded" >
+
+            <div class="container-fluid" >
+                <a class="navbar-brand " asp-area="" asp-controller="Home" asp-action="Index">
+                    <img class="logo" src="~/img/SANOKAAM.png" alt="Logo" style="" />
+                </a>
+
+                <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon navbar-dark"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 btn-group btn-group-toggle    ">
+
+                        <li class="nav-item">
+                            <a class=" nav-link text-light pb-0 active" asp-area="" asp-controller="Work" asp-action="Index">WORK</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="  nav-link text-light pb-0 active hirecss" asp-area="" asp-controller="Hire" asp-action="Index" >HIRE</a>
+                        </li>
+                        </ul>
+
+                        @if (User.IsInRole("Admin"))
+                    {
+                        <div class="text-right d-sm-inline-flex" style="padding-right:162px;">
+                            <ul class="navbar-nav flex-grow-1">
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-light  rounded-3" asp-area="" asp-controller="AppRoles" asp-action="Index" style="background-color:#004A4F">
+                                        ADMIN DASHBOARD
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-light btn-danger rounded-3 mx-3" asp-area="" asp-controller="AppRoles" asp-action="Index">VIEW/CREATE ROLE</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    }
+
+                    @if (User.IsInRole("Employ"))
+                    {
+                        <div class="text-right d-sm-inline-flex" style="padding-right:162px;">
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-light  rounded-3" asp-area="" asp-controller="EmployerDashboard" asp-action="Index" style="background-color:#004A4F">
+                                        EMPLOYER DASHBOARD
+                                    </a>
+                                </li>
+                               
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-light  rounded-3  mx-3 btn-danger px-4" asp-area="" asp-controller="AddJob" asp-action="Index" >ADD JOB</a>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+
+                    @if (User.IsInRole("Find Work"))
+                    {
+                        <div class="text-right d-sm-inline-flex text-center" style="padding-right:162px;">
+                            <ul class="navbar-nav flex-grow-1">
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link text-light  rounded-3  mx-3 btn-danger px-4" asp-area="" asp-controller="ProfessionalProfile" asp-action="Index">YOUR PROFESSIONAL PROFILE</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light  rounded-3" asp-area="" asp-controller="WorkerDashboard" asp-action="Index" style="background-color:#004A4F">
+                                        YOUR DASHBOARD
+                                    </a>
+                                </li>
+                                <li>
+                                
+                                </li>
+                            </ul>
+                        </div>
+                    }
+
+                    <partial name="_LoginPartial" class="nav-item"/>
+                </div>
+            </div>
+            
+        </nav>
+    </header>
+    <div class="container-fluid p-0" >
+        <main role="main" class="">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - SanoKaam - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+</html>

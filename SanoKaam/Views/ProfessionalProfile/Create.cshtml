@@ -1,0 +1,331 @@
+﻿@model Profile
+
+@{
+    Guid id = ViewBag.Id;
+
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+<H1>Create Your Professional Profile</H1>
+
+<div class="px-5">
+ <form asp-action="Create" enctype="multipart/form-data">
+    
+        <table border="0" cellpadding="5" cellspacing="0" class=" table ">
+            <tr>
+                <td >
+                    <img id="preview" src="https://via.placeholder.com/200x200.png?text=Preview+Image&bg=FFFFFF" alt="Preview Image" style="max-height: 200px; margin-top: 10px; display: block; background-color: #fff;" />
+                    <label asp-for="Photo" class="control-label py-3"><b>Upload Your Professional Photo</b></label>
+                    <br />
+                    <input asp-for="Photo" type="file" class="form-control-file" onchange="previewImage(event)" accept="image/*" />
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 50%">
+                    <input hidden asp-for="UserId" value=@id>
+                    <label asp-for="FirstName"><b>First name  </b></label><br />
+                    <input required asp-for="FirstName" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                    <input asp-for="Id" hidden />
+                </td>
+                <td style="width: 50%">
+                    <label asp-for="LastName"><b>Last name </b></label><br />
+                    <input required asp-for="LastName" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 50%">
+                    <label asp-for="Country"><b>Country  </b></label><br />
+                    <input required asp-for="Country" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                    <input asp-for="Id" hidden />
+                </td>
+                <td style="width: 50%">
+                    <label asp-for="City"><b>City </b></label><br />
+                    <input required asp-for="City" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label asp-for="Email"><b>Email</b></label><br />
+                    <input required asp-for="Email" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label asp-for="PortfolioWebsite"><b>Portfolio website</b></label><br />
+                    <input required asp-for="PortfolioWebsite" type="text" maxlength="255" value="http://" style="width:100%;max-width: 535px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="Occupation"><b>Occupation</b></label><br />
+                    <input required asp-for="Occupation" type="text" maxlength="80" style="width:100%;max-width: 535px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="PhoneNumber"><b>Phone *</b></label><br />
+                    <input required asp-for="PhoneNumber" type="text" maxlength="15" style="width:100%;max-width: 260px" />
+                </td>
+            </tr>
+            <tr>
+            <tr>
+                <td colspan="2">
+                    <label asp-for="Bio"><b>Your Bio:</b></label><br />
+                    <textarea required asp-for="Bio" rows="7" cols="40" style="width:100%;max-width: 535px"></textarea>
+                </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                    <label required asp-for="DisplayCard"><b>Do you want to display your profile for HIRE?</b></label><br />
+                <input asp-for="DisplayCard" type="radio" value="True" checked="checked" /> Yes
+                <input asp-for="DisplayCard" type="radio" value="False" /> No
+             </td>
+            </tr>
+        </table>
+        <h1>Skills</h1>
+        @foreach (var skill in Model.Skill)
+        {
+            <partial name="_Skill" model="skill" />
+
+        }
+        
+        <h1>Experiences</h1>
+        <table class="table " id="table-id">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Position</th>
+                    <th>Level</th>
+                    <th>Organization</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="experiencesBody">
+
+                <tr id="row0">
+
+                    <td>      <input class="form-control" placeholder="Enter Years of Employment" name="Experience[0].Year">      </td>
+
+                    <td>      <input class="form-control" placeholder="Enter Position" name="Experience[0].Position">     </td>
+
+                    <td>      <input class="form-control" placeholder="Enter Level " name="Experience[0].Level">     </td>
+
+                    <td>
+                        <input class="form-control" placeholder="Enter Organization Name" name="Experience[0].Organization">
+                        <input hidden name="Experience[0].id">
+                    </td>
+
+                    <td>
+
+
+                        <button type="button" class="btn btn-danger remove_btn " id="0">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+
+                                < path d = "M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+
+                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+
+                            </svg>
+
+                        </button>
+
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="text-center">
+            <button type="button" class="btn btn-primary  rounded " id="addExperience">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-dotted" viewBox="0 0 16 16">
+                    <path d="M8 0c-.176 0-.35.006-.523.017l.064.998a7.117 7.117 0 0 1 .918 0l.064-.998A8.113 8.113 0 0 0 8 0zM6.44.152c-.346.069-.684.16-1.012.27l.321.948c.287-.098.582-.177.884-.237L6.44.153zm4.132.271a7.946 7.946 0 0 0-1.011-.27l-.194.98c.302.06.597.14.884.237l.321-.947zm1.873.925a8 8 0 0 0-.906-.524l-.443.896c.275.136.54.29.793.459l.556-.831zM4.46.824c-.314.155-.616.33-.905.524l.556.83a7.07 7.07 0 0 1 .793-.458L4.46.824zM2.725 1.985c-.262.23-.51.478-.74.74l.752.66c.202-.23.418-.446.648-.648l-.66-.752zm11.29.74a8.058 8.058 0 0 0-.74-.74l-.66.752c.23.202.447.418.648.648l.752-.66zm1.161 1.735a7.98 7.98 0 0 0-.524-.905l-.83.556c.169.253.322.518.458.793l.896-.443zM1.348 3.555c-.194.289-.37.591-.524.906l.896.443c.136-.275.29-.54.459-.793l-.831-.556zM.423 5.428a7.945 7.945 0 0 0-.27 1.011l.98.194c.06-.302.14-.597.237-.884l-.947-.321zM15.848 6.44a7.943 7.943 0 0 0-.27-1.012l-.948.321c.098.287.177.582.237.884l.98-.194zM.017 7.477a8.113 8.113 0 0 0 0 1.046l.998-.064a7.117 7.117 0 0 1 0-.918l-.998-.064zM16 8a8.1 8.1 0 0 0-.017-.523l-.998.064a7.11 7.11 0 0 1 0 .918l.998.064A8.1 8.1 0 0 0 16 8zM.152 9.56c.069.346.16.684.27 1.012l.948-.321a6.944 6.944 0 0 1-.237-.884l-.98.194zm15.425 1.012c.112-.328.202-.666.27-1.011l-.98-.194c-.06.302-.14.597-.237.884l.947.321zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a6.999 6.999 0 0 1-.458-.793l-.896.443zm13.828.905c.194-.289.37-.591.524-.906l-.896-.443c-.136.275-.29.54-.459.793l.831.556zm-12.667.83c.23.262.478.51.74.74l.66-.752a7.047 7.047 0 0 1-.648-.648l-.752.66zm11.29.74c.262-.23.51-.478.74-.74l-.752-.66c-.201.23-.418.447-.648.648l.66.752zm-1.735 1.161c.314-.155.616-.33.905-.524l-.556-.83a7.07 7.07 0 0 1-.793.458l.443.896zm-7.985-.524c.289.194.591.37.906.524l.443-.896a6.998 6.998 0 0 1-.793-.459l-.556.831zm1.873.925c.328.112.666.202 1.011.27l.194-.98a6.953 6.953 0 0 1-.884-.237l-.321.947zm4.132.271a7.944 7.944 0 0 0 1.012-.27l-.321-.948a6.954 6.954 0 0 1-.884.237l.194.98zm-2.083.135a8.1 8.1 0 0 0 1.046 0l-.064-.998a7.11 7.11 0 0 1-.918 0l-.064.998zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                </svg>
+            </button>
+        </div>
+        <hr />
+
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+        <h1>Add Education</h1>
+        <div class="text-center">
+        </div>
+        <br />
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th>Year of Graduation</th>
+                    <th>Degree</th>
+                    <th>Level</th>
+                    <th>Grade</th>
+                    <th>Institution</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="education-container">
+
+                @foreach (var education in Model.Education)
+                {
+                    <partial name="_Education" model="education" />
+
+                }
+
+
+            </tbody>
+        </table>
+
+        <div class="text-center mt-1">
+
+            <a class="btn btn-primary mt-3" onclick="addEducation()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-dotted" viewBox="0 0 16 16">
+                    <path d="M8 0c-.176 0-.35.006-.523.017l.064.998a7.117 7.117 0 0 1 .918 0l.064-.998A8.113 8.113 0 0 0 8 0zM6.44.152c-.346.069-.684.16-1.012.27l.321.948c.287-.098.582-.177.884-.237L6.44.153zm4.132.271a7.946 7.946 0 0 0-1.011-.27l-.194.98c.302.06.597.14.884.237l.321-.947zm1.873.925a8 8 0 0 0-.906-.524l-.443.896c.275.136.54.29.793.459l.556-.831zM4.46.824c-.314.155-.616.33-.905.524l.556.83a7.07 7.07 0 0 1 .793-.458L4.46.824zM2.725 1.985c-.262.23-.51.478-.74.74l.752.66c.202-.23.418-.446.648-.648l-.66-.752zm11.29.74a8.058 8.058 0 0 0-.74-.74l-.66.752c.23.202.447.418.648.648l.752-.66zm1.161 1.735a7.98 7.98 0 0 0-.524-.905l-.83.556c.169.253.322.518.458.793l.896-.443zM1.348 3.555c-.194.289-.37.591-.524.906l.896.443c.136-.275.29-.54.459-.793l-.831-.556zM.423 5.428a7.945 7.945 0 0 0-.27 1.011l.98.194c.06-.302.14-.597.237-.884l-.947-.321zM15.848 6.44a7.943 7.943 0 0 0-.27-1.012l-.948.321c.098.287.177.582.237.884l.98-.194zM.017 7.477a8.113 8.113 0 0 0 0 1.046l.998-.064a7.117 7.117 0 0 1 0-.918l-.998-.064zM16 8a8.1 8.1 0 0 0-.017-.523l-.998.064a7.11 7.11 0 0 1 0 .918l.998.064A8.1 8.1 0 0 0 16 8zM.152 9.56c.069.346.16.684.27 1.012l.948-.321a6.944 6.944 0 0 1-.237-.884l-.98.194zm15.425 1.012c.112-.328.202-.666.27-1.011l-.98-.194c-.06.302-.14.597-.237.884l.947.321zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a6.999 6.999 0 0 1-.458-.793l-.896.443zm13.828.905c.194-.289.37-.591.524-.906l-.896-.443c-.136.275-.29.54-.459.793l.831.556zm-12.667.83c.23.262.478.51.74.74l.66-.752a7.047 7.047 0 0 1-.648-.648l-.752.66zm11.29.74c.262-.23.51-.478.74-.74l-.752-.66c-.201.23-.418.447-.648.648l.66.752zm-1.735 1.161c.314-.155.616-.33.905-.524l-.556-.83a7.07 7.07 0 0 1-.793.458l.443.896zm-7.985-.524c.289.194.591.37.906.524l.443-.896a6.998 6.998 0 0 1-.793-.459l-.556.831zm1.873.925c.328.112.666.202 1.011.27l.194-.98a6.953 6.953 0 0 1-.884-.237l-.321.947zm4.132.271a7.944 7.944 0 0 0 1.012-.27l-.321-.948a6.954 6.954 0 0 1-.884.237l.194.98zm-2.083.135a8.1 8.1 0 0 0 1.046 0l-.064-.998a7.11 7.11 0 0 1-.918 0l-.064.998zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                </svg>
+
+            </a>
+        </div>
+        <hr />
+
+
+
+
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-success rounded p-3 m-3 ">SUBMIT</button>
+        </div>
+    </form>
+</div>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#addExperience").show();
+    });
+
+
+    $(document).ready(function () {
+
+
+
+        $('#addExperience').on("click", function () {
+            var totaltableRows = $('#table-id').find('tr').length;
+            var rows = parseInt(totaltableRows, 10);
+            var counter = rows - 1;
+            //var id = $('#id').val();
+            //var year = $("#year").val();
+            //var level = $("#level").val();
+            //var position = $("#position").val();
+            //var organization = $("#organization").val();
+            //var profileId = $("#profileId").val();
+
+            $("#experiencesBody").append(
+
+                '<tr id="row' + counter + '" >' +
+                '<td>' + ' <input class="form-control"  placeholder="Enter Years of Employment" name="Experience[' + counter + '].Year"  >' + ' </td>' +
+                '<td>' + ' <input class="form-control"  placeholder="Enter Position" name="Experience[' + counter + '].Position"  >' + '</td>' +
+                '<td>' + ' <input class="form-control"  placeholder="Enter Level "name="Experience[' + counter + '].Level" >' + '</td>' +
+                '<td>' + ' <input class="form-control"  placeholder="Enter Organization Name" name="Experience[' + counter + '].Organization"  >'
+                + '</td>' +
+                '<td>' +
+                '<button type="button" class= "btn btn-danger remove_btn" id="' + counter + '"  >' +
+                '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">' +
+                '< path d = "M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />' +
+                '<path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />' +
+                '</svg>' +
+                '</button>' +
+
+                '</td>' +
+                '</tr>'
+
+
+            )
+
+            $('#year').val('');
+            $('#level').val('');
+            $('#position').val('');
+            $('#organization').val('');
+
+
+
+        });
+
+
+
+
+        //$(document).on('click', '.remove_btn', function () {
+
+        //    var row_id = $(this).attr('id');
+        //    var idInt = parseInt(row_id, 10);
+        //    var i = idInt + 1;
+        //    $('#row'+row_id+'').remove();
+        //    var totalRows = $('#table-id').find('tr').length;
+        //    var rowsnum = parseInt(totalRows, 10);
+
+        //    for (i; i <= rowsnum; i++) {
+        //        var row = $('#row' + i + '');
+        //        var tds = row.find('td');
+        //        tds.each(function () {
+        //            var input = $(this).find('input[name*="experience"]');
+        //            if (input.length > 0) {
+        //                var name = input.attr('name');
+        //                var index = parseInt(name.match(/\d+/)[0], 10); // extract the current index
+        //                input.attr('name', name.replace(index, index - 1)); // update the index and set the new name
+        //                input.attr('id', input.attr('id').replace(index, index - 1));
+        //            }// update the ID attribute as well
+        //        });
+        //    }
+        //    row.attr('id', 'row' + (i - 1));
+
+        //});
+        $(document).on('click', '.remove_btn', function () {
+            var row_id = $(this).attr('id');
+            var idInt = parseInt(row_id, 10);
+            var i = idInt + 1;
+            $('#row' + row_id + '').remove();
+
+
+            var totalRows = $('#table-id').find('tr').length;
+            var rowsnum = parseInt(totalRows, 10);
+
+            for (i; i <= rowsnum; i++) {
+                var row = $('#row' + i + '');
+                row.attr('id', 'row' + (i - 1)); // update the row ID
+
+                var button = row.find('button').attr('id', i - 1);
+
+                var inputs = row.find('input[name*="Experience"]');
+                inputs.each(function () {
+                    var name = $(this).attr('name');
+
+                    var index = parseInt(name.match(/\d+/)[0], 10); // extract the current index
+                    $(this).attr('name', name.replace(index, index - 1)); // update the index and set the new name
+                    // $(this).attr('id', $(this).attr('id').replace(index, index - 1)); // update the ID attribute as well
+                });
+
+                //update the values of all five inputs in the table row
+
+                //var td = row.find('td');
+                //td.each(function () {
+                //    var input = $(this).find('input[name*="Experience"]');
+                //    var val = input.val();
+                //    if (val) {
+                //        var newVal = parseInt(val, 10) - 1;
+                //        input.val(newVal);
+                //    }
+                //});
+                debugger
+            }
+
+        });
+
+
+    });
+</script>
+
+

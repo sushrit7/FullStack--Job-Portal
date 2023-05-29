@@ -1,0 +1,42 @@
+﻿
+@model IEnumerable<Job>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="headingcontainer">
+    <h1>JOBS</h1>
+
+</div>
+
+   
+    
+        @foreach (var obj in Model)
+        {   
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-4 d-flex justify-content-center">
+                <img id="preview" src="@Url.Action("GetLogo", "ProfessionalProfile", new { id = obj.Id })" alt="Profile Photo" width="175" height="175" style="object-fit:contain" />
+
+                     </div>
+                    <div class="col-8">
+                         <h3>
+                        @obj.JobTitle
+                        </h3>
+                
+                        <p>@obj.CompanyName</p> <p>Salary: @obj.Salary</p>
+
+                <a asp-controller="Work" asp-action="ViewMore" class="btn btn-primary" asp-route-id="@obj.Id">
+                    VIEW MORE & APPLY
+                </a>
+                     </div>
+
+                 </div>
+            </div>   
+        <hr />
+        }
+
+    
+
+    
+

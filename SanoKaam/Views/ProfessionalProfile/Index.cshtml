@@ -1,0 +1,296 @@
+﻿@model Profile
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="px-5">
+    
+    <div class="text-end ">
+        <a asp-controller="ProfessionalProfile" asp-action="Update" class="btn btn-primary  my-3" style="margin-right: 10%; "> UPDATE PROFILE</a>
+ 
+    </div>
+    <div class="headingcontainer">
+    <H1> Your Professional Profile</H1>
+    </div>
+    <div class="px-5">
+
+
+        <div class="pb-4">
+
+            <div class="wrapper">
+                <div class="intro">
+                    <div class="profile">
+                        <div class="photo">
+                            <img id="preview" src="@Url.Action("GetPhoto", "ProfessionalProfile", new { id = Model.Id })" alt="Profile Photo" width="175" height="175" />
+
+                        </div>
+                        <div class="bio">
+                            <h3 class="name">@Model.FirstName @Model.LastName</h3>
+                            <p class="profession">@Model.Occupation</p>
+                        </div>
+                    </div>
+                    <div class="intro-section about">
+                        <h3 class="title">about me</h3>
+                        <p class="paragraph">
+                            @Model.Bio
+                        </p>
+                    </div>
+                    <div class="intro-section contact">
+                        <h3 class="title">Contact</h3>
+                        <div class="info-section">
+                            <i class="fas fa-phone"></i>
+                            <span>@Model.PhoneNumber</span>
+                        </div>
+                        <div class="info-section">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>@Model.City, @Model.Country</span>
+                        </div>
+                        <div class="info-section">
+                            <i class="fas fa-paper-plane"></i>
+                            <a target="_blank" rel="author" href="@Model.Email">
+                            <span>@Model.Email</span>
+                            </a>
+                        </div>                    
+                    </div>
+                    <div class="intro-section follow">
+                        <h3 class="title">Portfolio Website</h3>
+                        <div class="info-section link">
+                            <i class="fab fa-github"></i>
+                            <a target="_blank" rel="author" href="@Model.PortfolioWebsite">
+                                <span>@Model.PortfolioWebsite</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="detail">
+                    <div class="detail-section edu">
+                        <div class="detail-title">
+                            <div class="title-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <span>Experience</span>
+                        </div>
+                        @foreach (var experience in Model.Experience)
+                        {
+                            <div class="detail-content">
+                                <div class="timeline-block">
+                                    <h3>@experience.Level @experience.Position <br /> @experience.Organization, @experience.Year </h3>
+                                    <p></p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="detail-section edu">
+                        <div class="detail-title">
+                            <div class="title-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <span>Education</span>
+                        </div>
+                        @foreach (var education in Model.Education)
+                        {
+                            <div class="detail-content">
+                                <div class="timeline-block">
+                                    <h3>@education.Level in @education.Degree; <br /> @education.Institution, @education.YearOfGraduation </h3>
+                                    <p></p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="detail-section pg-skill">
+                        <div class="detail-title">
+                            <div class="title-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <span> Skills</span>
+                        </div>
+                        <div class="detail-content">
+                            <ul class="pg-list">
+                                @foreach (var skill in Model.Skill)
+                                {
+                                    <li>
+                                        <span>@skill.Skills</span>
+
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+
+@*
+        <form>
+
+            <table border="0" cellpadding="5" cellspacing="0" class=" table ">
+                <tr>
+                    <td class="text-end" colspan="2">
+                        @if (Model.Photo != null)
+                        {
+                            <div style="padding-right:120px">
+                                <img id="preview" src="@Url.Action("GetPhoto", "ProfessionalProfile", new { id = Model.Id })" alt="Profile Photo" width="175" height="175" />
+                                <br />
+                                <label asp-for="Photo" class="control-label py-3"><b>Your Professional Photo</b></label>
+                            </div>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">
+                        <label asp-for="FirstName"><b>First name  </b></label><br />
+                        <input disabled asp-for="FirstName" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                    </td>
+                    <td style="width: 50%">
+                        <label asp-for="LastName"><b>Last name </b></label><br />
+                        <input disabled asp-for="LastName" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">
+                        <label asp-for="Country"><b>Country  </b></label><br />
+                        <input required asp-for="Country" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                        <input asp-for="Id" hidden />
+                    </td>
+                    <td style="width: 50%">
+                        <label asp-for="City"><b>City </b></label><br />
+                        <input required asp-for="City" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label asp-for="Email"><b>Email </b></label><br />
+                        <input disabled asp-for="Email" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label asp-for="PortfolioWebsite"><b>Portfolio website</b></label><br />
+                        <input disabled asp-for="PortfolioWebsite" type="text" maxlength="255" style="width:100%;max-width: 535px" />
+                    </td>
+                </tr>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Occupation"><b>Occupation</b></label><br />
+                        <input required asp-for="Occupation" type="text" maxlength="80" style="width:100%;max-width: 260px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="PhoneNumber"><b>Phone </b></label><br />
+                        <input disabled asp-for="PhoneNumber" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label asp-for="Bio"><b>Your Bio:</b></label><br />
+                        <textarea required asp-for="Bio" rows="7" cols="40" style="width:100%;max-width: 535px"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label required asp-for="DisplayCard"><b>Do you want to display your profile for HIRE?</b></label><br />
+                        <input asp-for="DisplayCard" type="radio" value="True" checked="checked" /> Yes
+                        <input asp-for="DisplayCard" type="radio" value="False" /> No
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+
+
+    </div>
+    <ul class="list-group list-group-horizontal px-5">
+        <li class="list-group-item"><b>Skills:</b></li>
+        @foreach (var skill in Model.Skill)
+        {
+            <li class="list-group-item"> @skill.Skills </li>
+        }
+    </ul>
+    <h1>Experiences</h1>
+    <div class="text-center">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Position</th>
+                    <th>Level</th>
+                    <th>Organization</th>
+
+                </tr>
+            </thead>
+            <tbody id="experiencesBody">
+                @foreach (var experience in Model.Experience)
+                {
+                    <tr>
+                        <td>
+                            @experience.Year
+                        </td>
+                        <td>
+                            @experience.Position
+                        </td>
+                        <td>
+                            @experience.Level
+                        </td>
+                        <td>
+                            @experience.Organization
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <h1>Education</h1>
+
+    <div class="text-center">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Year of Graduation</th>
+                    <th>Degree</th>
+                    <th>Level</th>
+                    <th>Grade</th>
+                    <th>Institution</th>
+                    
+                </tr>
+            </thead>
+            <tbody id="education-container">
+
+                @foreach (var education in Model.Education)
+                {
+                    <tr>
+                        <td>
+                            @education.YearOfGraduation
+                        </td>
+                        <td>
+                            @education.Degree
+                        </td>
+                        <td>
+                            @education.Level
+                        </td>
+                        <td>
+                            @education.Grade
+                        </td>
+                        <td>
+                            @education.Institution
+                        </td>
+                    </tr>
+               }
+            </tbody>
+        </table>
+    </div>
+    <br />
+
+</div>*@

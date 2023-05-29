@@ -1,0 +1,90 @@
+﻿@model Job
+@{
+    ViewData["Title"] = "MyJobDetailEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="headingcontainer">
+    <h1>Edit</h1>
+</div>
+
+<div class="px-5">
+    <form method="post" enctype="multipart/form-data">
+
+        <table border="0" cellpadding="5" cellspacing="0" class=" table ">
+            <tr>
+                <td>
+                    
+                    <label asp-for="CompanyLogo" class="control-label py-3"><b>Company Logo:</b></label>
+                    <br />
+                        <img class="mx-2" id="preview" src="@Url.Action("GetLogo", "ProfessionalProfile", new { id = Model.Id })" alt="Profile Photo" width="175" height="175" style="object-fit:contain" />
+                        
+                        <br />
+                        <input asp-for="CompanyLogo" type="file" class="form-control-file" onchange="previewImage(event)" accept="image/*" />
+                 
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 50%">
+                    <label asp-for="JobTitle"><b>Job Title</b></label><br />
+                    <input hidden asp-for="EmployerId" />
+                    <input asp-for="JobTitle" type="text" maxlength="300" style="width:100%;" />
+                </td>
+                <td style="width: 50%">
+                    <label asp-for="JobType"><b>Job Type*</b></label><br />
+                    <input asp-for="JobType" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label asp-for="JobDescription"><b>Job Description *</b></label><br />
+                    <textarea asp-for="JobDescription" type="text" maxlength="1500" style="width:100%;max-width: 700px"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label asp-for="Location"><b>Location</b></label><br />
+                    <input asp-for="Location" type="text" maxlength="255" style="width:100%;max-width: 535px" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label asp-for="CompanyName"><b>CompanyName*</b></label><br />
+                    <input asp-for="CompanyName" type="text" maxlength="200" style="width:100%;max-width: 535px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="Salary"><b>Salary </b></label><br /> <input asp-for="Salary" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                </td>
+                <td>
+                    <label asp-for="NumberOfPost"><b>Number of Post</b></label><br />
+                    <input asp-for="NumberOfPost" type="number" maxlength="50" style="width:100%;max-width: 260px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="Qualification"><b>Qualification</b></label><br />
+                    <textarea asp-for="Qualification" type="text" maxlength="1000" style="width:100%;max-width: 500px"> @Model.Qualification </textarea>
+                </td>
+                <td>
+                    <label asp-for="Experience"><b>Experience</b></label><br />
+                    <input asp-for="Experience" type="text" maxlength="500" style="width:100%;max-width: 260px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="Deadline"><b>Deadline</b></label><br />
+                    <input asp-for="Deadline" type="date" />
+                </td>
+            </tr>
+            <tr>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary rounded p-3">UPDATE</button>
+                </div>
+            </tr>
+        </table>
+
+    </form>
+
+</div>
