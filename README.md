@@ -54,44 +54,93 @@ The system has three main user account types:
 
 ## Screenshots
 ### Screenshots
+<table>
+    <tr>
+        <td>
+            <img src="screenshots/homepage.png" width="250" alt="Homepage">
+            <br>
+            <em>Homepage</em>
+        </td>
+        <td>
+            <img src="screenshots/addjob.png" width="250" alt="Add Job">
+            <br>
+            <em>Add Job</em>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="screenshots/applicant.png" width="250" alt="Applicant">
+            <br>
+            <em>Applicant</em>
+        </td>
+        <td>
+            <img src="screenshots/applicationreview.png" width="250" alt="Application Review">
+            <br>
+            <em>Application Review</em>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="screenshots/employeedashboard.png" width="250" alt="Employee Dashboard">
+            <br>
+            <em>Employee Dashboard</em>
+        </td>
+        <td>
+            <img src="screenshots/employerdashboard.png" width="250" alt="Employer Dashboard">
+            <br>
+            <em>Employer Dashboard</em>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="screenshots/hire.png" width="250" alt="Hire">
+            <br>
+            <em>Hire</em>
+        </td>
+        <td>
+            <img src="screenshots/homepage-carousel.png" width="250" alt="Homepage Carousel">
+            <br>
+            <em>Homepage Carousel</em>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="screenshots/jobdescription.png" width="250" alt="Job Description">
+            <br>
+            <em>Job Description</em>
+        </td>
+        <td>
+            <img src="screenshots/joblistings.png" width="250" alt="Job Listings">
+            <br>
+            <em>Job Listings</em>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="screenshots/loginportal.png" width="250" alt="Login Portal">
+            <br>
+            <em>Login Portal</em>
+        </td>
+        <td>
+            <img src="screenshots/myjobs.png" width="250" alt="My Jobs">
+            <br>
+            <em>My Jobs</em>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="screenshots/professionalprofile.png" width="250" alt="Professional Profile">
+            <br>
+            <em>Professional Profile</em>
+        </td>
+        <td>
+            <img src="screenshots/professionalprofileupdate.png" width="250" alt="Professional Profile Update">
+            <br>
+            <em>Professional Profile Update</em>
+        </td>
+    </tr>
+</table>
 
-<div class="grid-container">
-    <div class="homepage">
-        <img src="screenshots/homepage.png" width="250" alt="Homepage 1">
-        <br>
-        <em>Homepage</em>
-    </div>
-    <div class="addjob">
-        <img src="screenshots/addjob.png" width="250" alt="Add Job 1">
-        <br>
-        <em>Add Job</em>
-    </div>
-    <div class="applicant">
-        <img src="screenshots/applicant.png" width="250" alt="Applicant 1">
-        <br>
-        <em>Applicant</em>
-    </div>
-    <div class="applicationreview">
-        <img src="screenshots/applicationreview.png" width="250" alt="Application Review 1">
-        <br>
-        <em>Application Review</em>
-    </div>
-    <div class="employeedashboard">
-        <img src="screenshots/employeedashboard.png" width="250" alt="Employee Dashboard 1">
-        <br>
-        <em>Employee Dashboard</em>
-    </div>
-    <div class="employerdashboard">
-        <img src="screenshots/employerdashboard.png" width="250" alt="Employer Dashboard 1">
-        <br>
-        <em>Employer Dashboard</em>
-    </div>
-    <div class="hire">
-        <img src="screenshots/hire.png" width="250" alt="Hire 1">
-        <br>
-        <em>Hire</em>
-    </div>
-</div>
 
 
 ![Homepage](screenshots/homepage.png)
