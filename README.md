@@ -53,21 +53,16 @@ The system has three main user account types:
 - **Admin**: Administrators who have overall control over the system, including managing users and system settings.
 
 ## Screenshots
-### Screenshots
+
+![Homepage](screenshots/homepage.png)
+*Sample screenshot of the homepage.*
 <table>
     <tr>
-        <td>
-            <img src="screenshots/homepage.png" width="250" alt="Homepage">
-            <br>
-            <em>Homepage</em>
-        </td>
         <td>
             <img src="screenshots/addjob.png" width="250" alt="Add Job">
             <br>
             <em>Add Job</em>
         </td>
-    </tr>
-    <tr>
         <td>
             <img src="screenshots/applicant.png" width="250" alt="Applicant">
             <br>
@@ -90,20 +85,18 @@ The system has three main user account types:
             <br>
             <em>Employer Dashboard</em>
         </td>
-    </tr>
-    <tr>
         <td>
             <img src="screenshots/hire.png" width="250" alt="Hire">
             <br>
             <em>Hire</em>
         </td>
+    </tr>
+    <tr>
         <td>
             <img src="screenshots/homepage-carousel.png" width="250" alt="Homepage Carousel">
             <br>
             <em>Homepage Carousel</em>
         </td>
-    </tr>
-    <tr>
         <td>
             <img src="screenshots/jobdescription.png" width="250" alt="Job Description">
             <br>
@@ -126,13 +119,13 @@ The system has three main user account types:
             <br>
             <em>My Jobs</em>
         </td>
-    </tr>
-    <tr>
         <td>
             <img src="screenshots/professionalprofile.png" width="250" alt="Professional Profile">
             <br>
             <em>Professional Profile</em>
         </td>
+    </tr>
+    <tr>
         <td>
             <img src="screenshots/professionalprofileupdate.png" width="250" alt="Professional Profile Update">
             <br>
@@ -140,11 +133,6 @@ The system has three main user account types:
         </td>
     </tr>
 </table>
-
-
-
-![Homepage](screenshots/homepage.png)
-*Sample screenshot of the homepage.*
 
 ![Job Listings](screenshots/joblistings.png)
 *Example of a job listing.*
