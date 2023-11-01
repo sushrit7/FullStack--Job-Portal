@@ -8,8 +8,6 @@ SANOKAAM is a comprehensive job portal that empowers employers to post jobs and 
 - [Usage](#usage)
 - [User Accounts](#user-accounts)
 - [Screenshots](#screenshots)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 - **Job Posting**: Employers can easily post job listings, providing detailed information about the position, qualifications, and application process.
