@@ -56,7 +56,7 @@ The system has three main user account types:
 
 ## Screenshots
 
-![Dashboard](screenshots/dashboard.png)
+![Homepage](screenshots/homepage.png)
 *Sample screenshot of the homepage.*
 
 ![Job Listing](screenshots/job-listing.png)
