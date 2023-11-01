@@ -53,6 +53,25 @@ The system has three main user account types:
 - **Admin**: Administrators who have overall control over the system, including managing users and system settings.
 
 ## Screenshots
+### Screenshots
+
+<div align="center">
+    <img src="screenshots/homepage.png" width="250" alt="Screenshot 1">
+    <br>
+    <em>Homepage</em>
+</div>
+
+<div align="center">
+    <img src="screenshots/joblistings.png" width="250" alt="Screenshot 2">
+    <br>
+    <em>Job Listing</em>
+</div>
+
+<div align="center">
+    <img src="screenshots/screenshot3.png" width="250" alt="Screenshot 3">
+    <br>
+    <em>Application Form</em>
+</div>
 
 ![Homepage](screenshots/homepage.png)
 *Sample screenshot of the homepage.*
