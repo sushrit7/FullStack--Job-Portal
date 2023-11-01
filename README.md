@@ -1,6 +1,6 @@
 # SANOKAAM - A JobPortal
 
-SANOKAAM is a comprehensive job portal that empowers employers to post jobs and review applicants, while providing job seekers with a platform to view and apply for positions that match their preferences. The system includes individual dashboards for employees, employers, and administrators, offering a tailored experience for each user type. It is built using the .NET Framework with C#, MVC (Model-View-Controller) web application architecture, a SQL Server database, Entity Framework for data access, and incorporates HTML, CSS, Bootstrap, and jQuery for a modern and user-friendly interface.
+SANOKAAM is a comprehensive job portal that empowers employers to post jobs and review applicants while providing job seekers with a platform to view and apply for positions that match their preferences. The system includes individual dashboards for employees, employers, and administrators, offering a tailored experience for each user type. It is built using the .NET Framework with C#, MVC (Model-View-Controller) web application architecture, a SQL Server database, Entity Framework for data access, and incorporates HTML, CSS, Bootstrap, and jQuery for a modern and user-friendly interface.
 
 ## Table of Contents
 - [Features](#features)
@@ -18,7 +18,7 @@ SANOKAAM is a comprehensive job portal that empowers employers to post jobs and 
 
 - **Job Search**: Job seekers can search for job listings based on various criteria, including job title, location, and industry.
 
-- **Application Submission**: Job seekers can submit their applications online, attaching their resumes and cover letters directly.
+- **Application Submission**: Job seekers can submit their applications online.
 
 - **User Dashboards**: Every user type (employee, employer, and admin) has access to a personalized dashboard where they can manage their respective tasks and activities.
 
@@ -29,7 +29,7 @@ SANOKAAM is a comprehensive job portal that empowers employers to post jobs and 
 1. **Clone the Repository**: Clone the SANOKAAM repository to your local machine.
 
    ```bash
-   git clone https://github.com/yourusername/SANOKAAM-JobPortal.git
+   git clone https://github.com/sushrit7/JobPortal.git
    ```
 
 2. **Database Configuration**: Create a SQL Server database and update the connection string in the `appsettings.json` file.
@@ -57,21 +57,13 @@ The system has three main user account types:
 ## Screenshots
 
 ![Dashboard](screenshots/dashboard.png)
-*Sample screenshot of the user dashboard.*
+*Sample screenshot of the homepage.*
 
 ![Job Listing](screenshots/job-listing.png)
 *Example of a job listing.*
 
 _For more screenshots, please check the [Screenshots](/screenshots) directory._
 
-## Contributing
-
-We welcome contributions from the open-source community. If you'd like to contribute to SANOKAAM, please follow our [Contribution Guidelines](CONTRIBUTING.md).
-
-## License
-
-This project is licensed under the [MIT License](LICENSE), which means you are free to use, modify, and distribute the code according to the terms of the license.
-
 ---
 
-Feel free to explore SANOKAAM - A JobPortal and contribute to its development. If you have any questions or encounter issues, please open a GitHub issue, and we'll be happy to assist you. Enjoy using SANOKAAM!
+Feel free to explore SANOKAAM - A JobPortal and contribute to its development. If you have any questions or encounter issues, please open a GitHub issue, and I'll be happy to assist you. Enjoy using SANOKAAM!
