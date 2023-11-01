@@ -134,10 +134,7 @@ The system has three main user account types:
     </tr>
 </table>
 
-![Job Listings](screenshots/joblistings.png)
-*Example of a job listing.*
-
-_For more screenshots, please check the [Screenshots](/screenshots) directory._
+_For screenshots, please check the [Screenshots](/screenshots) directory._
 
 ---
 
