@@ -55,23 +55,50 @@ The system has three main user account types:
 ## Screenshots
 ### Screenshots
 
-<div align="center">
-    <img src="screenshots/homepage.png" width="250" alt="Screenshot 1">
-    <br>
-    <em>Homepage</em>
+<div class="grid-container">
+    <div class="homepage">
+        <img src="screenshots/homepage.png" width="250" alt="Homepage 1">
+        <br>
+        <em>Homepage</em>
+    </div>
+
+    <div class="addjob">
+        <img src="screenshots/addjob.png" width="250" alt="Add Job 1">
+        <br>
+        <em>Add Job</em>
+    </div>
+
+    <div class="applicant">
+        <img src="screenshots/applicant.png" width="250" alt="Applicant 1">
+        <br>
+        <em>Applicant</em>
+    </div>
+
+    <div class="applicationreview">
+        <img src="screenshots/applicationreview.png" width="250" alt="Application Review 1">
+        <br>
+        <em>Application Review</em>
+    </div>
+
+    <div class="employeedashboard">
+        <img src="screenshots/employeedashboard.png" width="250" alt="Employee Dashboard 1">
+        <br>
+        <em>Employee Dashboard</em>
+    </div>
+
+    <div class="employerdashboard">
+        <img src="screenshots/employerdashboard.png" width="250" alt="Employer Dashboard 1">
+        <br>
+        <em>Employer Dashboard</em>
+    </div>
+
+    <div class="hire">
+        <img src="screenshots/hire.png" width="250" alt="Hire 1">
+        <br>
+        <em>Hire</em>
+    </div>
 </div>
 
-<div align="center">
-    <img src="screenshots/joblistings.png" width="250" alt="Screenshot 2">
-    <br>
-    <em>Job Listing</em>
-</div>
-
-<div align="center">
-    <img src="screenshots/screenshot3.png" width="250" alt="Screenshot 3">
-    <br>
-    <em>Application Form</em>
-</div>
 
 ![Homepage](screenshots/homepage.png)
 *Sample screenshot of the homepage.*
